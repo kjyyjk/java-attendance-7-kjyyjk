@@ -1,13 +1,50 @@
 package attendance;
 
-import attendance.view.InputView;
+import static attendance.view.InputParser.parseOption;
+import static attendance.view.InputView.inputOption;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Application {
     public static void main(String[] args) {
         Attendances attendances = readAttendances();
-        InputView.inputOption();
+        while(true) {
+            String option = parseOption(inputOption());
+
+            if (!runByOption(option)) {
+                break;
+            }
+        }
+    }
+
+    private static boolean runByOption(final String option) {
+        if (option.equals("1")) {
+            // TODO
+            return true;
+        }
+
+        if (option.equals("2")) {
+            // TODO
+            return true;
+        }
+
+        if (option.equals("3")) {
+            // TODO
+            return true;
+        }
+
+        if (option.equals("4")) {
+            // TODO
+            return true;
+        }
+
+        if (option.equals("Q")) {
+            return false;
+        }
+
+        // TODO
+        return false;
     }
 
     private static Attendances readAttendances() {
