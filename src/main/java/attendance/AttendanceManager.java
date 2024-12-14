@@ -8,7 +8,6 @@ import static attendance.view.InputView.inputUpdateDate;
 import static attendance.view.InputView.inputUpdateNickname;
 import static attendance.view.InputView.inputUpdateTime;
 
-import attendance.view.InputView;
 import attendance.view.OutputView;
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
@@ -30,6 +29,7 @@ public class AttendanceManager {
         LocalDate updateDate = parseDate(inputUpdateDate());
         LocalTime updateTime = parseAttendanceTime(inputUpdateTime());
         LocalDateTime localDateTime = LocalDateTime.of(updateDate, updateTime);
+        attendances.update(crew, localDateTime);
     }
 
     public static LocalDate getTodayLocalDate() {
