@@ -15,24 +15,26 @@ public class Attendances {
         attendanceList.add(attendance);
     }
 
-    public void update(final Crew crew, final LocalDateTime localDateTime) {
-        LocalDate updateDate = dateTimeToDate(localDateTime);
-        System.out.println(crew.getNickname());
-        System.out.println(updateDate);
-
+    public Attendance getAttendance(final Crew crew, final LocalDate localDate) {
         Attendance attendance = attendanceList.stream()
                 .filter(a -> a.getCrew().equals(crew))
-                .filter(a -> dateTimeToDate(a.getAttendanceDateTime()).equals(updateDate))
+                .filter(a -> dateTimeToDate(a.getAttendanceDateTime()).equals(localDate))
                 .findAny()
                 .orElseGet(null);
 
         if (attendance == null) {
-            // TODO
-            return;
+            //TODO
+            return null;
         }
 
-        attendanceList.remove(attendance);
-        addAttendance(new Attendance(crew, localDateTime));
+        return attendance;
+    }
+
+    public Attendance update(final Attendance oldAttendance, final Crew crew, final LocalDateTime localDateTime) {
+        attendanceList.remove(oldAttendance);
+        Attendance newAttendance = new Attendance(crew, localDateTime);
+        addAttendance(newAttendance);
+        return newAttendance;
     }
 
     public Crew getCrew(final String nickname) {

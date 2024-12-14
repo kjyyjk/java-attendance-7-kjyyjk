@@ -1,5 +1,6 @@
 package attendance;
 
+import static attendance.util.TimeUtils.dateTimeToDate;
 import static attendance.view.InputParser.parseAttendanceTime;
 import static attendance.view.InputParser.parseDate;
 import static attendance.view.InputView.inputAttendanceTime;
@@ -29,7 +30,9 @@ public class AttendanceManager {
         LocalDate updateDate = parseDate(inputUpdateDate());
         LocalTime updateTime = parseAttendanceTime(inputUpdateTime());
         LocalDateTime localDateTime = LocalDateTime.of(updateDate, updateTime);
-        attendances.update(crew, localDateTime);
+        Attendance oldAttendance = attendances.getAttendance(crew, dateTimeToDate(localDateTime));
+        Attendance newAttendance = attendances.update(oldAttendance, crew, localDateTime);
+        OutputView.printAttendanceUpdateResult(oldAttendance, newAttendance);
     }
 
     public static LocalDate getTodayLocalDate() {
