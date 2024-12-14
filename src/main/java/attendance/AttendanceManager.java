@@ -4,12 +4,21 @@ import static attendance.view.InputParser.parseAttendanceTime;
 import static attendance.view.InputView.inputAttendanceTime;
 import static attendance.view.InputView.inputNickname;
 
+import camp.nextstep.edu.missionutils.DateTimes;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class AttendanceManager {
-    public static void attend(Attendances attendances) {
-        String nickname = inputNickname();
+    public static void attend(final Attendances attendances) {
+        Crew crew = attendances.getCrew(inputNickname());
         LocalTime attendanceTime = parseAttendanceTime(inputAttendanceTime());
-        System.out.println(attendanceTime);
+        LocalDateTime attendanceDateTime = LocalDateTime.of(getTodayDate(), attendanceTime);
+        attendances.addAttendance(new Attendance(crew, attendanceDateTime));
+    }
+
+    public static LocalDate getTodayDate() {
+        LocalDateTime now = DateTimes.now();
+        return now.toLocalDate();
     }
 }

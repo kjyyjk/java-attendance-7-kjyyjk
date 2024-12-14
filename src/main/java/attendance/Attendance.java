@@ -10,4 +10,8 @@ public class Attendance {
         this.crew = crew;
         this.localDateTime = localDateTime;
     }
+
+    public Crew getCrew() {
+        return crew;
+    }
 }
