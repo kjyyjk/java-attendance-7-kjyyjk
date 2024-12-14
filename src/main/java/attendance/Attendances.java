@@ -20,12 +20,7 @@ public class Attendances {
                 .filter(a -> a.getCrew().equals(crew))
                 .filter(a -> dateTimeToDate(a.getAttendanceDateTime()).equals(localDate))
                 .findAny()
-                .orElseGet(null);
-
-        if (attendance == null) {
-            //TODO
-            return null;
-        }
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 아직 수정할 수 없습니다."));
 
         return attendance;
     }
