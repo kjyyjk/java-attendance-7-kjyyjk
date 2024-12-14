@@ -1,5 +1,8 @@
-package attendance;
+package attendance.file;
 
+import attendance.Attendance;
+import attendance.Attendances;
+import attendance.Crew;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDateTime;

@@ -3,6 +3,8 @@ package attendance;
 import static attendance.view.InputParser.parseOption;
 import static attendance.view.InputView.inputOption;
 
+import attendance.file.AttendanceFileParser;
+import attendance.file.AttendanceFileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 

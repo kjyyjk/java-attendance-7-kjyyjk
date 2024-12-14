@@ -1,7 +1,7 @@
 package attendance.view;
 
-import static attendance.TimeUtils.getTodayDate;
-import static attendance.TimeUtils.getTodayDayName;
+import static attendance.util.TimeUtils.getTodayDate;
+import static attendance.util.TimeUtils.getTodayDayName;
 
 import camp.nextstep.edu.missionutils.Console;
 

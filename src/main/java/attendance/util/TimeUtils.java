@@ -1,5 +1,6 @@
-package attendance;
+package attendance.util;
 
+import attendance.Day;
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
