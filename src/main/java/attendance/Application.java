@@ -11,16 +11,15 @@ public class Application {
         Attendances attendances = readAttendances();
         while(true) {
             String option = parseOption(inputOption());
-
-            if (!runByOption(option)) {
+            if (!runByOption(option, attendances)) {
                 break;
             }
         }
     }
 
-    private static boolean runByOption(final String option) {
+    private static boolean runByOption(final String option, final Attendances attendances) {
         if (option.equals("1")) {
-            // TODO
+            AttendanceManager.attend(attendances);
             return true;
         }
 
