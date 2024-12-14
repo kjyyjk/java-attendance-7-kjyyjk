@@ -26,7 +26,7 @@ public class Application {
         }
 
         if (option.equals("2")) {
-            // TODO
+            AttendanceManager.update(attendances);
             return true;
         }
 

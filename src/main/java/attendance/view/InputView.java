@@ -15,6 +15,9 @@ public class InputView {
 
     private static final String INPUT_NICKNAME_MESSAGE = "\n닉네임을 입력해 주세요.";
     private static final String INPUT_ATTENDANCE_TIME_MESSAGE = "등교 시간을 입력해 주세요.";
+    private static final String INPUT_UPDATE_NICKNAME_MESSAGE = "\n출석을 수정하려는 크루의 닉네임을 입력해 주세요.";
+    private static final String INPUT_UPDATE_ATTENDANCE_DATE_MESSAGE = "\n수정하려는 날짜(일)를 입력해 주세요.";
+    private static final String INPUT_UPDATE_ATTENDANCE_TIME_MESSAGE = "\n언제로 변경하겠습니까?";
 
     public static String inputOption() {
         printOption();
@@ -34,6 +37,21 @@ public class InputView {
     public static void printOption() {
         String message = OPTION_MESSAGE.formatted(getTodayDate(), getTodayDayName());
         System.out.println(message);
+    }
+
+    public static String inputUpdateNickname() {
+        System.out.println(INPUT_UPDATE_NICKNAME_MESSAGE);
+        return input();
+    }
+
+    public static String inputUpdateDate() {
+        System.out.println(INPUT_UPDATE_ATTENDANCE_DATE_MESSAGE);
+        return input();
+    }
+
+    public static String inputUpdateTime() {
+        System.out.println(INPUT_UPDATE_ATTENDANCE_TIME_MESSAGE);
+        return input();
     }
 
     private static String input() {
