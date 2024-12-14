@@ -15,6 +15,7 @@ public class InputView {
             + "Q. 종료";
 
     private static final String INPUT_NICKNAME_MESSAGE = "닉네임을 입력해 주세요.";
+    private static final String INPUT_ATTENDANCE_TIME_MESSAGE = "등교 시간을 입력해 주세요.";
 
     public static String inputOption() {
         printOption();
@@ -23,6 +24,11 @@ public class InputView {
 
     public static String inputNickname() {
         System.out.println(INPUT_NICKNAME_MESSAGE);
+        return input();
+    }
+
+    public static String inputAttendanceTime() {
+        System.out.println(INPUT_ATTENDANCE_TIME_MESSAGE);
         return input();
     }
 
