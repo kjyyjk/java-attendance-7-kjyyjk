@@ -9,10 +9,10 @@ public enum Day {
     WED(DayOfWeek.WEDNESDAY, "수요일", LocalTime.of(10, 0), LocalTime.of(18, 0)),
     THU(DayOfWeek.THURSDAY, "목요일", LocalTime.of(10, 0), LocalTime.of(18, 0)),
     FRI(DayOfWeek.FRIDAY, "금요일", LocalTime.of(10, 0), LocalTime.of(18, 0)),
-    SAT(DayOfWeek.SATURDAY, "토요일", null, null),
-    SUN(DayOfWeek.SUNDAY, "일요일", null, null);
-//    SAT(DayOfWeek.SATURDAY, "토요일", LocalTime.of(10, 0), LocalTime.of(18, 0)),
-//    SUN(DayOfWeek.SUNDAY, "일요일", LocalTime.of(10, 0), LocalTime.of(18, 0));
+//    SAT(DayOfWeek.SATURDAY, "토요일", null, null),
+//    SUN(DayOfWeek.SUNDAY, "일요일", null, null);
+    SAT(DayOfWeek.SATURDAY, "토요일", LocalTime.of(10, 0), LocalTime.of(18, 0)),
+    SUN(DayOfWeek.SUNDAY, "일요일", LocalTime.of(10, 0), LocalTime.of(18, 0));
 
 
     private final DayOfWeek dayOfWeek;

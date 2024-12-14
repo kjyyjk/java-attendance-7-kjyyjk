@@ -4,6 +4,7 @@ import static attendance.view.InputParser.parseAttendanceTime;
 import static attendance.view.InputView.inputAttendanceTime;
 import static attendance.view.InputView.inputNickname;
 
+import attendance.view.OutputView;
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,7 +15,9 @@ public class AttendanceManager {
         Crew crew = attendances.getCrew(inputNickname());
         LocalTime attendanceTime = parseAttendanceTime(inputAttendanceTime());
         LocalDateTime attendanceDateTime = LocalDateTime.of(getTodayDate(), attendanceTime);
-        attendances.addAttendance(new Attendance(crew, attendanceDateTime));
+        Attendance attendance = new Attendance(crew, attendanceDateTime);
+        attendances.addAttendance(attendance);
+        OutputView.printAttendanceResult(attendance);
     }
 
     public static LocalDate getTodayDate() {

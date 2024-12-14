@@ -25,4 +25,8 @@ public class TimeUtils {
     public static LocalTime dateTimeToTime(final LocalDateTime dateTime) {
         return dateTime.toLocalTime();
     }
+
+    public static String getDayName(DayOfWeek dayOfWeek) {
+        return Day.getDay(dayOfWeek).getName();
+    }
 }

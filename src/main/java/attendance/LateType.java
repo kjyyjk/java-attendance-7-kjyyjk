@@ -4,9 +4,15 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 public enum LateType {
-    ABSENCE,
-    LATE,
-    NOT;
+    ABSENCE("결석"),
+    LATE("지각"),
+    NOT("출석");
+
+    private final String name;
+
+    LateType(final String name) {
+        this.name = name;
+    }
 
     public static LateType getType(final LocalTime eduStart, final LocalTime attendanceTime) {
         Duration diff = Duration.between(eduStart, attendanceTime);
@@ -20,5 +26,9 @@ public enum LateType {
         }
 
         return ABSENCE;
+    }
+
+    public String getName() {
+        return name;
     }
 }
