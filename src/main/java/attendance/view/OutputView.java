@@ -74,7 +74,7 @@ public class OutputView {
                 String type = lateType.getName();
 
                 String message = ATTENDANCE_HISTORY_RESULT_MESSAGE.formatted(12, plusZero(String.valueOf(date)),
-                        plusZero(String.valueOf(day)), plusZero(String.valueOf(hour)), plusZero(String.valueOf(minute)),
+                        dayName, plusZero(String.valueOf(hour)), plusZero(String.valueOf(minute)),
                         type);
                 System.out.println(message);
             }
