@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    private static final String ATTENDANCE_RESULT_MESSAGE = "\n%d월 %d일 %s %d:%d (%s)";
-    private static final String ATTENDANCE_HISTORY_RESULT_MESSAGE = "%d월 %d일 %s %d:%d (%s)";
-    private static final String ABSENCE_RESULT_MESSAGE = "12월 %d일 %s --:-- (결석)";
+    private static final String ATTENDANCE_RESULT_MESSAGE = "\n%s월 %s일 %s %s:%s (%s)";
+    private static final String ATTENDANCE_HISTORY_RESULT_MESSAGE = "%s월 %s일 %s %s:%s (%s)";
+    private static final String ABSENCE_RESULT_MESSAGE = "12월 %s일 %s --:-- (결석)";
     private static final String ATTENDANCE_UPDATE_RESULT_MESSAGE = "\n%d월 %d일 %s %d:%d (%s) -> %d:%d (%s) 수정 완료!";
 
     public static void printAttendanceResult(final Attendance attendance) {
@@ -25,7 +25,9 @@ public class OutputView {
         LateType lateType = attendance.getLateType();
         String type = lateType.getName();
 
-        String message = ATTENDANCE_RESULT_MESSAGE.formatted(month, date, day, hour, minute, type);
+        String message = ATTENDANCE_RESULT_MESSAGE.formatted(month, plusZero(String.valueOf(date)),
+                plusZero(String.valueOf(day)), plusZero(String.valueOf(hour)), plusZero(String.valueOf(minute)),
+                type);
         System.out.println(message);
     }
 
@@ -71,13 +73,15 @@ public class OutputView {
                 LateType lateType = attendance.getLateType();
                 String type = lateType.getName();
 
-                String message = ATTENDANCE_HISTORY_RESULT_MESSAGE.formatted(12, date, day, hour, minute, type);
+                String message = ATTENDANCE_HISTORY_RESULT_MESSAGE.formatted(12, plusZero(String.valueOf(date)),
+                        plusZero(String.valueOf(day)), plusZero(String.valueOf(hour)), plusZero(String.valueOf(minute)),
+                        type);
                 System.out.println(message);
             }
 
             if (attendance == null) {
                 String dayName = TimeUtils.getDayName(LocalDateTime.of(2024, 12, day, 0, 0).getDayOfWeek());
-                String message = ABSENCE_RESULT_MESSAGE.formatted(day, dayName);
+                String message = ABSENCE_RESULT_MESSAGE.formatted(plusZero(String.valueOf(day)), dayName);
                 System.out.println(message);
             }
         }
@@ -87,5 +91,12 @@ public class OutputView {
         for (LateType type : lates.keySet()) {
             System.out.println("%s: %d회".formatted(type.getName(), lates.get(type)));
         }
+    }
+
+    private static String plusZero(final String number) {
+        if (number.length() == 1) {
+            return "0" + number;
+        }
+        return number;
     }
 }
