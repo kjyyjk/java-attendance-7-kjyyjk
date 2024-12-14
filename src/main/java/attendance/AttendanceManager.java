@@ -7,7 +7,6 @@ import static attendance.view.InputView.inputAttendanceTime;
 import static attendance.view.InputView.inputNickname;
 import static attendance.view.InputView.inputUpdateDate;
 import static attendance.view.InputView.inputUpdateNickname;
-import static attendance.view.InputView.inputUpdateTime;
 
 import attendance.view.OutputView;
 import camp.nextstep.edu.missionutils.DateTimes;
