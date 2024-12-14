@@ -99,4 +99,8 @@ public class OutputView {
         }
         return number;
     }
+
+    public static void printError(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
+    }
 }

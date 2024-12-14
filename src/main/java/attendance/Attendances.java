@@ -42,11 +42,7 @@ public class Attendances {
                 .map(attendance -> attendance.getCrew())
                 .filter(c -> c.isNicknameEquals(nickname))
                 .findAny()
-                .orElseGet(null);
-
-        if (crew == null) {
-            // TODO
-        }
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 등록되지 않은 닉네임입니다."));
 
         return crew;
     }
