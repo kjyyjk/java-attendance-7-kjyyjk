@@ -31,7 +31,7 @@ public class Application {
         }
 
         if (option.equals("3")) {
-            // TODO
+            AttendanceManager.checkAttendance(attendances);
             return true;
         }
 

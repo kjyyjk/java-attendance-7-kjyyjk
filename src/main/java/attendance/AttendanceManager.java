@@ -35,6 +35,11 @@ public class AttendanceManager {
         OutputView.printAttendanceUpdateResult(oldAttendance, newAttendance);
     }
 
+    public static void checkAttendance(final Attendances attendances) {
+        Crew crew = attendances.getCrew(inputNickname());
+        attendances.getAttendanceHistory(crew);
+    }
+
     public static LocalDate getTodayLocalDate() {
         LocalDateTime now = DateTimes.now();
         return now.toLocalDate();

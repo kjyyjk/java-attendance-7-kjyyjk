@@ -50,4 +50,8 @@ public class Attendances {
 
         return crew;
     }
+
+    public void getAttendanceHistory(final Crew crew) {
+
+    }
 }
