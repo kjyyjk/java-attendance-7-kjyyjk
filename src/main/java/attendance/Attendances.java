@@ -2,7 +2,6 @@ package attendance;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Attendances {
     private List<Attendance> attendanceList = new ArrayList<>();

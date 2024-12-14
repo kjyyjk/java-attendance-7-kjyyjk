@@ -1,10 +1,9 @@
 package attendance.view;
 
-import attendance.Day;
+import static attendance.TimeUtils.getTodayDate;
+import static attendance.TimeUtils.getTodayDayName;
+
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.DateTimes;
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 
 public class InputView {
     private static final String OPTION_MESSAGE = "오늘은 12월 %d일 %s입니다. 기능을 선택해 주세요.\n"
@@ -33,19 +32,8 @@ public class InputView {
     }
 
     public static void printOption() {
-        String message = OPTION_MESSAGE.formatted(getTodayDate(), getTodayDay());
+        String message = OPTION_MESSAGE.formatted(getTodayDate(), getTodayDayName());
         System.out.println(message);
-    }
-
-    private static int getTodayDate() {
-        LocalDateTime now = DateTimes.now();
-        return now.getDayOfMonth();
-    }
-
-    private static String getTodayDay() {
-        LocalDateTime now = DateTimes.now();
-        DayOfWeek dayOfWeek = now.getDayOfWeek();
-        return Day.getDayName(dayOfWeek);
     }
 
     private static String input() {
