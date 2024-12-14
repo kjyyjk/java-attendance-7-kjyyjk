@@ -5,6 +5,7 @@ import static attendance.view.InputView.inputOption;
 
 import attendance.file.AttendanceFileParser;
 import attendance.file.AttendanceFileReader;
+import attendance.view.OutputView;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -12,9 +13,13 @@ public class Application {
     public static void main(String[] args) {
         Attendances attendances = readAttendances();
         while(true) {
-            String option = parseOption(inputOption());
-            if (!runByOption(option, attendances)) {
-                break;
+            try {
+                String option = parseOption(inputOption());
+                if (!runByOption(option, attendances)) {
+                    break;
+                }
+            } catch (IllegalArgumentException e) {
+                OutputView.printError(e);
             }
         }
     }
@@ -44,8 +49,7 @@ public class Application {
             return false;
         }
 
-        // TODO
-        return false;
+        throw new IllegalArgumentException("[ERROR] 잘못된 형식을 입력하였습니다.");
     }
 
     private static Attendances readAttendances() {
