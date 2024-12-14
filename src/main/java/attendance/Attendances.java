@@ -1,22 +1,22 @@
 package attendance;
 
 import static attendance.util.TimeUtils.dateTimeToDate;
-
+import attendance.util.TimeUtils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Attendances {
-    private List<Attendance> attendanceList = new ArrayList<>();
+    private List<Attendance> attendances = new ArrayList<>();
 
     public void addAttendance(final Attendance attendance) {
-        attendanceList.add(attendance);
+        attendances.add(attendance);
     }
 
     public Attendance getAttendance(final Crew crew, final LocalDate localDate) {
-        Attendance attendance = attendanceList.stream()
+        Attendance attendance = attendances.stream()
                 .filter(a -> a.getCrew().equals(crew))
                 .filter(a -> dateTimeToDate(a.getAttendanceDateTime()).equals(localDate))
                 .findAny()
@@ -31,14 +31,14 @@ public class Attendances {
     }
 
     public Attendance update(final Attendance oldAttendance, final Crew crew, final LocalDateTime localDateTime) {
-        attendanceList.remove(oldAttendance);
+        attendances.remove(oldAttendance);
         Attendance newAttendance = new Attendance(crew, localDateTime);
         addAttendance(newAttendance);
         return newAttendance;
     }
 
     public Crew getCrew(final String nickname) {
-        Crew crew = attendanceList.stream()
+        Crew crew = attendances.stream()
                 .map(attendance -> attendance.getCrew())
                 .filter(c -> c.isNicknameEquals(nickname))
                 .findAny()
@@ -51,7 +51,11 @@ public class Attendances {
         return crew;
     }
 
-    public void getAttendanceHistory(final Crew crew) {
-
+    public AttendanceHistory getAttendanceHistory(final Crew crew) {
+        List<Attendance> attendanceHistory = this.attendances.stream()
+                .filter(attendance -> attendance.getCrew().equals(crew))
+                .filter(attendance -> attendance.getAttendanceDateTime().getDayOfMonth() < TimeUtils.getTodayDate())
+                .collect(Collectors.toList());
+        return new AttendanceHistory(attendanceHistory);
     }
 }

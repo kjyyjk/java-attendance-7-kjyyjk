@@ -4,9 +4,9 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 public enum LateType {
-    ABSENCE("결석"),
+    NOT("출석"),
     LATE("지각"),
-    NOT("출석");
+    ABSENCE("결석");
 
     private final String name;
 

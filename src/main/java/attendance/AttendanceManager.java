@@ -37,7 +37,8 @@ public class AttendanceManager {
 
     public static void checkAttendance(final Attendances attendances) {
         Crew crew = attendances.getCrew(inputNickname());
-        attendances.getAttendanceHistory(crew);
+        AttendanceHistory attendanceHistory = attendances.getAttendanceHistory(crew);
+        OutputView.printAttendanceHistory(attendanceHistory);
     }
 
     public static LocalDate getTodayLocalDate() {

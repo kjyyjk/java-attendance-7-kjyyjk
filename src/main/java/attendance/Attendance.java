@@ -4,7 +4,7 @@ import attendance.util.TimeUtils;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Attendance {
+public class Attendance implements Comparable{
     private Crew crew;
     private LocalDateTime attendanceDateTime;
     public LateType lateType;
@@ -16,7 +16,7 @@ public class Attendance {
     }
 
     public LateType calculateLateType(final LocalDateTime attendanceDateTime) {
-        Day day = TimeUtils.getTodayDay();
+        Day day = Day.getDay(attendanceDateTime.getDayOfWeek());
         LocalTime eduStartTime = day.getEduStartTime();
         LocalTime attendanceTime = attendanceDateTime.toLocalTime();
         return LateType.getType(eduStartTime, attendanceTime);
@@ -32,5 +32,14 @@ public class Attendance {
 
     public LateType getLateType() {
         return lateType;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Attendance attendance = (Attendance) o;
+        if (this.attendanceDateTime.isBefore(attendance.getAttendanceDateTime())) {
+            return -1;
+        }
+        return 1;
     }
 }
